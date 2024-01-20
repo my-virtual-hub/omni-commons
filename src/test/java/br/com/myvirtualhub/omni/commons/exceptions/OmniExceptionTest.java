@@ -32,7 +32,7 @@ class OmniExceptionTest {
 
         assertEquals(testMessage, exception.getMessage());
         assertEquals(testCause, exception.getCause());
-        assertNull(exception.getThrowableCause());
+        assertEquals(testCause.toString(), exception.getThrowableCause());
     }
 
     @Test
@@ -51,7 +51,7 @@ class OmniExceptionTest {
         String testMessage = "Test message";
         OmniException exception = new OmniException(testMessage);
 
-        String expectedString = "OmniException{Exception.toString()=br.com.myvirtualhub.omni.commons.exceptions.OmniException: Test message, throwableCause=null}";
+        String expectedString = "OmniException{Exception.toString()=br.com.myvirtualhub.omni.commons.exceptions.OmniException: Test message, throwableCause={null}}";
         assertEquals(expectedString, exception.toString());
     }
 }
