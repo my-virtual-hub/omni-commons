@@ -85,7 +85,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Important for fetching all branches
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT_REPO_GITHUB_ACTIONS }}
       - name: Set up Git User
         run: |
           git config --global user.email "marco.quicula@quicula.com.br"
