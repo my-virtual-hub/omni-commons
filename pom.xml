@@ -20,6 +20,7 @@
 
     <properties>
         <repo-pkg-github>my-virtual-hub/omni-commons</repo-pkg-github>
+        <com-googlecode-libphonenumber>8.13.12</com-googlecode-libphonenumber>
     </properties>
 
     <repositories>
@@ -29,5 +30,13 @@
             <url>https://nexus.myvirtualhub.com.br/repository/myvirtualhub-public/</url>
         </repository>
     </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.googlecode.libphonenumber</groupId>
+            <artifactId>libphonenumber</artifactId>
+            <version>${com-googlecode-libphonenumber}</version>
+        </dependency>
+    </dependencies>
 
 </project>
