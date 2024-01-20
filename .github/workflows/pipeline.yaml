@@ -100,7 +100,8 @@ jobs:
     name: Maven Package and Publish
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     needs:
-      - merge-to-main
+      - qodana
+      - sonar
     runs-on: ubuntu-latest
     permissions:
       contents: read
