@@ -88,8 +88,9 @@ jobs:
           token: ${{ secrets.PAT_REPO_GITHUB_ACTIONS }}
       - name: Set up Git User
         run: |
-          git config --global user.email "marco.quicula@quicula.com.br"
-          git config --global user.name "Marco Quiçula"
+          git config --global user.signingkey "${{ secrets.GIT_CONFIG_USER_SIGNINGKEY }}" 
+          git config --global user.email "${{ vars.GIT_CONFIG_USER_EMAIL }}"
+          git config --global user.name "${{ vars.GIT_CONFIG_USER_NAME }}"
       - name: Merge branch
         run: |
           git fetch origin
