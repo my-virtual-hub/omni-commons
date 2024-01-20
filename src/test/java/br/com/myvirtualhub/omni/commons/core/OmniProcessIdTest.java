@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class OmniProcessIdTest {
 
@@ -45,7 +46,24 @@ class OmniProcessIdTest {
     }
 
     @Test
-    void testgetOmniProcessId() {
+    void testConstructorWithNull() {
+        assertThrows(NullPointerException.class, () -> new OmniProcessId("prefix", null,
+                UUID.randomUUID()) {
+            @Override
+            public OmniProcessId copy() throws PhoneNumberException {
+                return null;
+            }
+        });
+        assertThrows(NullPointerException.class, () -> new OmniProcessId( null) {
+            @Override
+            public OmniProcessId copy() throws PhoneNumberException {
+                return null;
+            }
+        });
+    }
+
+    @Test
+    void testGetOmniProcessId() {
         assertEquals("prefix:SMS:ed18e662-86ea-4cd1-848a-092000af927c",omniProcessIdUnderTest1.getOmniProcessId());
     }
 

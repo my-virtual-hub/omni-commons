@@ -52,6 +52,7 @@ public abstract class OmniProcessId implements Serializable, Copyable<OmniProces
      * @param omniProcessUUID The universally unique identifier (UUID) associated with the OmniProcessId.
      */
     protected OmniProcessId(String prefix, ChannelType channelType, UUID omniProcessUUID) {
+        Objects.requireNonNull(channelType, "OmniProcessId channelType cannot be null");
         this.prefix = prefix;
         this.channelType = channelType;
         this.omniProcessUUID = omniProcessUUID;

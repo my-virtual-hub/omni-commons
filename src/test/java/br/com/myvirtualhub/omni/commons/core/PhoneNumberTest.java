@@ -15,6 +15,7 @@ import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class PhoneNumberTest {
@@ -81,5 +82,15 @@ class PhoneNumberTest {
 
         String expectedString = "PhoneNumber{content='" + phoneNumberContent + "'}";
         assertEquals(expectedString, phoneNumber.toString());
+    }
+
+    @Test
+    void testCopy() throws Exception {
+        String phoneNumberContent = "+1234567890";
+        PhoneNumber phoneNumber = new PhoneNumber(phoneNumberContent);
+        PhoneNumber phoneNumberCopy = phoneNumber.copy();
+
+        assertEquals( phoneNumber, phoneNumberCopy);
+        assertNotSame(phoneNumber, phoneNumberCopy);
     }
 }

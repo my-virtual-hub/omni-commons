@@ -46,7 +46,7 @@ public class OmniException extends Exception {
      */
     public OmniException(String message, Throwable cause) {
         super(message, cause);
-        this.throwableCause = null;
+        this.throwableCause = cause.toString();
     }
 
     /**
@@ -78,7 +78,7 @@ public class OmniException extends Exception {
     public String toString() {
         return "OmniException{" +
                 "Exception.toString()=" + super.toString() +
-               ", throwableCause=" + throwableCause +
-               "}";
+               ", throwableCause={" + throwableCause +
+               "}}";
     }
 }
