@@ -25,10 +25,28 @@ import java.util.UUID;
  */
 public abstract class OmniProcessId implements Serializable, Copyable<OmniProcessId> {
 
+    /**
+     * Represents the prefix associated with an OmniProcessId.
+     * The prefix is a string value that is associated with an OmniProcessId object.
+     * It is used to identify and categorize the OmniProcessId.
+     * The prefix can be retrieved using the {@link OmniProcessId#getPrefix()} method.
+     * For example, if the prefix is "ABC123", it can be used to differentiate the OmniProcessId from others.
+     *
+     * @see OmniProcessId
+     * @see OmniProcessId#getPrefix()
+     */
     private final String prefix;
 
+    /**
+     * Represents the channel type associated with an OmniProcessId.
+     * The channel type is used to determine how to process and handle communications based on the specific channel.
+     * This information is typically used throughout the system.
+     */
     private final ChannelType channelType;
 
+    /**
+     * The omniProcessUUID variable represents the universally unique identifier (UUID) associated with the OmniProcessId.
+     */
     private final UUID omniProcessUUID;
 
     /**
