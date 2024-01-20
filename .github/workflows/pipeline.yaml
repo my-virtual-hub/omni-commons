@@ -74,7 +74,10 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Important for fetching all branches
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
@@ -84,12 +87,16 @@ jobs:
           settings-path: ${{ github.workspace }} # location for the settings.xml file
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
-      - name: Cache Maven packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
+      - name: Set up Git User
+        run: |
+          git config --global user.email "marco.quicula@quicula.com.br"
+          git config --global user.name "Marco Quiçula"
+      - name: Merge branch
+        run: |
+          git fetch origin
+          git checkout main  # Replace with your target branch
+          git merge origin/develop  # Replace with your source branch
+          git push origin main  # Replace with your target branch
   publish:
     name: Maven Package and Publish
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
