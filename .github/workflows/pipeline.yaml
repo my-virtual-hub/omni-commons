@@ -95,7 +95,7 @@ jobs:
         run: |
           git fetch origin
           git checkout main  # Replace with your target branch
-          git merge origin/develop  # Replace with your source branch
+          git merge --no-ff origin/develop  # Replace with your source branch
           git push origin main  # Replace with your target branch
   publish:
     name: Maven Package and Publish
