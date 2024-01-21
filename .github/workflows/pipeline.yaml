@@ -163,3 +163,29 @@ jobs:
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
           GPG_KEYNAME: ${{ vars.GPG_KEYNAME }}
           GPG_PASSPHRASE_SERVER_ID: ${{ secrets.GPG_PASSPHRASE_SERVER_ID }}
+  tag:
+    name: MAIN Generate Tag
+    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+    needs:
+      - publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Important for fetching all branches
+          token: ${{ secrets.PAT_REPO_GITHUB_ACTIONS }}
+      - name: Set up Git User to Sign Commit
+        run: |
+          mkdir -p ~/.gnupg/
+          echo "${{ secrets.GPG_SIGN_PRIVATE_KEY }}" > ~/.gnupg/private-key.asc
+          gpg --batch --import ~/.gnupg/private-key.asc
+          git config --global commit.gpgsign "true"
+          git config --global user.signingkey "${{ secrets.GIT_CONFIG_USER_SIGNINGKEY }}" 
+          git config --global user.email "${{ vars.GIT_CONFIG_USER_EMAIL }}"
+          git config --global user.name "${{ vars.GIT_CONFIG_USER_NAME }}"
+      - name: Generate Tag
+        run: |
+          TAG_NAME="tag-${GITHUB_RUN_NUMBER}"
+          git tag $TAG_NAME
+          git push origin $TAG_NAME
