@@ -186,6 +186,7 @@ jobs:
           git config --global user.name "${{ vars.GIT_CONFIG_USER_NAME }}"
       - name: Generate Tag
         run: |
-          TAG_NAME=tag$(date +"%Y%m%d-%H%M%S-%3N")
+          VERSION=$(cat pom.xml | grep '<version>' | head -1 | awk -F'[<>]' '{print $3}')
+          TAG_NAME=tag-$(date +"%Y%m%d-%H%M%S-%3N")-$VERSION
           git tag $TAG_NAME
           git push origin $TAG_NAME
