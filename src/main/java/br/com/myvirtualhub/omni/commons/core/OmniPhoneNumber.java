@@ -26,7 +26,7 @@ import java.util.Objects;
  * @version 1.0
  * @since   YourProject 1.0
  */
-public class PhoneNumber implements Serializable, Copyable<PhoneNumber> {
+public class OmniPhoneNumber implements Serializable, Copyable<OmniPhoneNumber> {
 
     /**
      * Represents the content of a variable.
@@ -36,46 +36,46 @@ public class PhoneNumber implements Serializable, Copyable<PhoneNumber> {
     private String content;
 
     /**
-     * Constructs a new PhoneNumber object. The phone number must be in the format
+     * Constructs a new OmniPhoneNumber object. The phone number must be in the format
      * of "+" followed by digits, including the country code, with no formatting.
      *
      * @param content the phone number string as entered by the user
      * @throws PhoneNumberException if the phone number is invalid
      */
-    public PhoneNumber(String content) throws PhoneNumberException {
+    public OmniPhoneNumber(String content) throws PhoneNumberException {
         PhoneNumberIsValidValidatorHandler validator = new PhoneNumberIsValidValidatorHandler.Builder().build();
         validator.validate(content);
         setContent(content);
     }
 
     /**
-     * Retrieves the content of the PhoneNumber object.
+     * Retrieves the content of the OmniPhoneNumber object.
      *
-     * @return the content of the PhoneNumber object as a String
+     * @return the content of the OmniPhoneNumber object as a String
      */
     public String getContent() {
         return content;
     }
 
     /**
-     * Sets the content of the PhoneNumber object.
+     * Sets the content of the OmniPhoneNumber object.
      *
-     * @param content the new content for the PhoneNumber object
+     * @param content the new content for the OmniPhoneNumber object
      */
     public void setContent(String content) {
         this.content = content;
     }
 
     @Override
-    public PhoneNumber copy() throws PhoneNumberException {
-        return new PhoneNumber(getContent());
+    public OmniPhoneNumber copy() throws PhoneNumberException {
+        return new OmniPhoneNumber(getContent());
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof PhoneNumber phoneNumber)) return false;
-        return getContent().equals(phoneNumber.getContent());
+        if (!(o instanceof OmniPhoneNumber omniPhoneNumber)) return false;
+        return getContent().equals(omniPhoneNumber.getContent());
     }
 
     @Override
@@ -85,7 +85,7 @@ public class PhoneNumber implements Serializable, Copyable<PhoneNumber> {
 
     @Override
     public String toString() {
-        return "PhoneNumber{" +
+        return "OmniPhoneNumber{" +
                 "content='" + content + '\'' +
                 '}';
     }
