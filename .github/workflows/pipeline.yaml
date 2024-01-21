@@ -186,6 +186,6 @@ jobs:
           git config --global user.name "${{ vars.GIT_CONFIG_USER_NAME }}"
       - name: Generate Tag
         run: |
-          TAG_NAME="tag-${GITHUB_RUN_NUMBER}"
+          TAG_NAME=tag$(date +"%Y%m%d-%H%M%S-%3N")
           git tag $TAG_NAME
           git push origin $TAG_NAME
