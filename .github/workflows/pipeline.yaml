@@ -64,7 +64,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=${{ vars.SONAR_PROJECTKEY }} -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml -Dsonar.exclusions="**/interfaces/**,**/enums/**"
   merge-to-main:
-    name: Merge Develop to Main
+    name: DEVELOP Merge DEVELOP to MAIN
     if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
     needs:
       - qodana
@@ -86,10 +86,12 @@ jobs:
         with:
           fetch-depth: 0  # Important for fetching all branches
           token: ${{ secrets.PAT_REPO_GITHUB_ACTIONS }}
-      - name: Set up Git User
+      - name: Set up Git User to Sign Commit
         run: |
+          mkdir -p ~/.gnupg/
+          echo "${{ secrets.GPG_SIGN_PRIVATE_KEY }}" > ~/.gnupg/private-key.asc
+          gpg --batch --import ~/.gnupg/private-key.asc
           git config --global commit.gpgsign "true"
-          git config --global gpg.format "ssh"
           git config --global user.signingkey "${{ secrets.GIT_CONFIG_USER_SIGNINGKEY }}" 
           git config --global user.email "${{ vars.GIT_CONFIG_USER_EMAIL }}"
           git config --global user.name "${{ vars.GIT_CONFIG_USER_NAME }}"
@@ -100,7 +102,7 @@ jobs:
           git merge --no-ff origin/develop  # Replace with your source branch
           git push origin main  # Replace with your target branch
   publish:
-    name: Maven Package and Publish
+    name: MAIN Maven Package and Publish
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     needs:
       - qodana
