@@ -165,7 +165,7 @@ jobs:
           GPG_PASSPHRASE_SERVER_ID: ${{ secrets.GPG_PASSPHRASE_SERVER_ID }}
   tag:
     name: MAIN Generate Tag
-    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     needs:
       - publish
     runs-on: ubuntu-latest
