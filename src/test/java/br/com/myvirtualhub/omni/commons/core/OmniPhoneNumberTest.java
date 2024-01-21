@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class PhoneNumberTest {
+class OmniPhoneNumberTest {
 
     private PhoneNumberIsValidValidatorHandler validator;
 
@@ -35,7 +35,7 @@ class PhoneNumberTest {
         String validPhoneNumber = "+1234567890";
         Mockito.doNothing().when(validator).validate(validPhoneNumber);
 
-        assertDoesNotThrow(() -> new PhoneNumber(validPhoneNumber));
+        assertDoesNotThrow(() -> new OmniPhoneNumber(validPhoneNumber));
     }
 
     @Test
@@ -43,54 +43,54 @@ class PhoneNumberTest {
         String invalidPhoneNumber = "invalid";
         Mockito.doThrow(PhoneNumberException.class).when(validator).validate(invalidPhoneNumber);
 
-        assertThrows(PhoneNumberException.class, () -> new PhoneNumber(invalidPhoneNumber));
+        assertThrows(PhoneNumberException.class, () -> new OmniPhoneNumber(invalidPhoneNumber));
     }
 
     @Test
     void getContentShouldReturnCorrectContent() throws PhoneNumberException {
         String phoneNumberContent = "+1234567890";
-        PhoneNumber phoneNumber = new PhoneNumber(phoneNumberContent);
+        OmniPhoneNumber omniPhoneNumber = new OmniPhoneNumber(phoneNumberContent);
 
-        assertEquals(phoneNumberContent, phoneNumber.getContent());
+        assertEquals(phoneNumberContent, omniPhoneNumber.getContent());
     }
 
     @Test
     void setContentShouldUpdateContent() throws PhoneNumberException {
         String initialContent = "+1234567890";
         String newContent = "+0987654321";
-        PhoneNumber phoneNumber = new PhoneNumber(initialContent);
+        OmniPhoneNumber omniPhoneNumber = new OmniPhoneNumber(initialContent);
 
-        phoneNumber.setContent(newContent);
+        omniPhoneNumber.setContent(newContent);
 
-        assertEquals(newContent, phoneNumber.getContent());
+        assertEquals(newContent, omniPhoneNumber.getContent());
     }
 
     @Test
     void equalsAndHashCodeShouldBeConsistent() throws PhoneNumberException {
         String phoneNumberContent = "+1234567890";
-        PhoneNumber phoneNumber1 = new PhoneNumber(phoneNumberContent);
-        PhoneNumber phoneNumber2 = new PhoneNumber(phoneNumberContent);
+        OmniPhoneNumber omniPhoneNumber1 = new OmniPhoneNumber(phoneNumberContent);
+        OmniPhoneNumber omniPhoneNumber2 = new OmniPhoneNumber(phoneNumberContent);
 
-        assertEquals(phoneNumber1, phoneNumber2);
-        assertEquals(phoneNumber1.hashCode(), phoneNumber2.hashCode());
+        assertEquals(omniPhoneNumber1, omniPhoneNumber2);
+        assertEquals(omniPhoneNumber1.hashCode(), omniPhoneNumber2.hashCode());
     }
 
     @Test
     void toStringShouldReturnCorrectFormat() throws PhoneNumberException {
         String phoneNumberContent = "+1234567890";
-        PhoneNumber phoneNumber = new PhoneNumber(phoneNumberContent);
+        OmniPhoneNumber omniPhoneNumber = new OmniPhoneNumber(phoneNumberContent);
 
-        String expectedString = "PhoneNumber{content='" + phoneNumberContent + "'}";
-        assertEquals(expectedString, phoneNumber.toString());
+        String expectedString = "OmniPhoneNumber{content='" + phoneNumberContent + "'}";
+        assertEquals(expectedString, omniPhoneNumber.toString());
     }
 
     @Test
     void testCopy() throws Exception {
         String phoneNumberContent = "+1234567890";
-        PhoneNumber phoneNumber = new PhoneNumber(phoneNumberContent);
-        PhoneNumber phoneNumberCopy = phoneNumber.copy();
+        OmniPhoneNumber omniPhoneNumber = new OmniPhoneNumber(phoneNumberContent);
+        OmniPhoneNumber omniPhoneNumberCopy = omniPhoneNumber.copy();
 
-        assertEquals( phoneNumber, phoneNumberCopy);
-        assertNotSame(phoneNumber, phoneNumberCopy);
+        assertEquals(omniPhoneNumber, omniPhoneNumberCopy);
+        assertNotSame(omniPhoneNumber, omniPhoneNumberCopy);
     }
 }
