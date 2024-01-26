@@ -20,7 +20,7 @@ This project operates independently and its progression depends on availability 
 ## Using SonarCloud and Qodana for Code Quality
 
 [![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/new_code?id=my-virtual-hub_omni-commons)
-[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=my-virtual-hub_omni-commons)](https://sonarcloud.io/summary/new_code?id=my-virtual-hub_omni-commons)  [![Qodana](https://github.com/my-virtual-hub/omni-comm-ports-outbound/actions/workflows/qodana.yml/badge.svg?branch=main)](https://github.com/my-virtual-hub/omni-commons/actions/workflows/qodana.yml)
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=my-virtual-hub_omni-commons)](https://sonarcloud.io/summary/new_code?id=my-virtual-hub_omni-commons) [![Pipeline](https://github.com/my-virtual-hub/omni-commons/actions/workflows/pipeline.yaml/badge.svg)](https://github.com/my-virtual-hub/omni-commons/actions/workflows/pipeline.yaml)
 
 | Quality Metrics | Code Metrics | Security Metrics |
 |---|---|---|
