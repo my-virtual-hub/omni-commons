@@ -18,8 +18,6 @@ package br.com.myvirtualhub.omni.commons.core;
 
 import br.com.myvirtualhub.omni.commons.enums.ChannelType;
 
-import java.util.UUID;
-
 /**
  * A concrete representation of a generic Omni Process identifier.
  * An instance of this class encapsulates the unique identification data associated with a generic Omni process,
@@ -35,26 +33,5 @@ public class GenericOmniProcessId extends OmniProcessId {
      */
     public GenericOmniProcessId() {
         super(ChannelType.GENERIC);
-    }
-
-    /**
-     * Constructs a new instance of GenericOmniProcessId with the specified prefix, channel type, and OmniProcess UUID.
-     *
-     * @param prefix The prefix associated with the OmniProcessId.
-     * @param channelType The channel type associated with the OmniProcessId.
-     * @param omniProcessUUID The universally unique identifier (UUID) associated with the OmniProcessId.
-     */
-    private GenericOmniProcessId(String prefix, ChannelType channelType, UUID omniProcessUUID ) {
-        super(prefix, channelType, omniProcessUUID);
-    }
-
-    /**
-     * Creates a copy of the OmniProcessId object.
-     *
-     * @return A new instance of OmniProcessId with the same prefix, channel type, and OmniProcess UUID as the original object.
-     */
-    @Override
-    public OmniProcessId copy() {
-        return new GenericOmniProcessId( getPrefix(), getChannelType(), UUID.fromString(getOmniProcessUUID().toString()));
     }
 }

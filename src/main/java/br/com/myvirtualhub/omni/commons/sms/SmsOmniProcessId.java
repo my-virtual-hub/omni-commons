@@ -19,8 +19,6 @@ package br.com.myvirtualhub.omni.commons.sms;
 import br.com.myvirtualhub.omni.commons.core.OmniProcessId;
 import br.com.myvirtualhub.omni.commons.enums.ChannelType;
 
-import java.util.UUID;
-
 /**
  * A specialized type of OmniProcessId that represents an SMS process within the application.
  *
@@ -47,19 +45,5 @@ public class SmsOmniProcessId extends OmniProcessId {
      */
     public SmsOmniProcessId() {
         super(ChannelType.SMS);
-    }
-
-    private SmsOmniProcessId(String prefix, ChannelType channelType, UUID omniProcessUUID ) {
-        super(prefix, channelType, omniProcessUUID);
-    }
-
-    /**
-     * Creates a deep copy of the SmsOmniProcessId object.
-     *
-     * @return A deep copy of the SmsOmniProcessId object.
-     */
-    @Override
-    public OmniProcessId copy() {
-        return new SmsOmniProcessId( getPrefix(), getChannelType(), UUID.fromString(getOmniProcessUUID().toString()));
     }
 }

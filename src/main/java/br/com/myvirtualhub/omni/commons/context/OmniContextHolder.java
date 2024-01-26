@@ -16,15 +16,13 @@
 
 package br.com.myvirtualhub.omni.commons.context;
 
-import br.com.myvirtualhub.omni.commons.core.OmniProcessId;
-
 /**
  * The OmniContextHolder class provides a thread-local context holder for OmniProcessIds.
  * It serves as a storage mechanism for the current OmniProcessId associated with a thread.
  * The class provides methods to set, get, and clear the OmniProcessId in the context holder.
  */
 public class OmniContextHolder {
-    private static final ThreadLocal<OmniContext<?>> contextHolder = new ThreadLocal<>();
+    private static final ThreadLocal<OmniContext> contextHolder = new ThreadLocal<>();
 
     private OmniContextHolder() {
         // private constructor to prevent instantiation
@@ -34,21 +32,18 @@ public class OmniContextHolder {
      * Sets the context for the OmniProcessId associated with the current thread.
      *
      * @param context the OmniContext object containing the OmniProcessId
-     * @param <T> the type of OmniProcessId stored in the context
      */
-    public static <T extends OmniProcessId> void setContext(OmniContext<T> context) {
+    public static void setContext(OmniContext context) {
         contextHolder.set(context);
     }
 
     /**
      * Retrieves the current OmniContext associated with the current thread.
      *
-     * @param <T> the type of OmniProcessId stored in the context
      * @return the OmniContext object containing the OmniProcessId
      */
-    public static <T extends OmniProcessId> OmniContext<T> getContext() {
-        //noinspection unchecked
-        return (OmniContext<T>) contextHolder.get();
+    public static OmniContext getContext() {
+        return contextHolder.get();
     }
 
     /**

@@ -17,6 +17,7 @@
 package br.com.myvirtualhub.omni.commons.interfaces;
 
 
+import br.com.myvirtualhub.omni.commons.exceptions.OmniException;
 import br.com.myvirtualhub.omni.commons.exceptions.PhoneNumberException;
 
 /**
@@ -37,5 +38,5 @@ public interface Copyable<T> {
      * @return a copy of the object
      * @throws PhoneNumberException if there is an issue with phone number operations while creating the copy
      */
-    T copy() throws PhoneNumberException;
+    T copy() throws OmniException;
 }

@@ -23,8 +23,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.mock;
 
-import br.com.myvirtualhub.omni.commons.core.OmniProcessId;
-
 class OmniContextHolderTest {
 
     @BeforeEach
@@ -34,18 +32,18 @@ class OmniContextHolderTest {
 
     @Test
     void testSetAndGetContext() {
-        OmniContext<OmniProcessId> mockOmniContext = mock(OmniContext.class);
+        OmniContext mockOmniContext = mock(OmniContext.class);
         OmniContextHolder.setContext(mockOmniContext);
-        OmniContext<OmniProcessId> retrievedContext = OmniContextHolder.getContext();
+        OmniContext retrievedContext = OmniContextHolder.getContext();
         assertEquals(mockOmniContext, retrievedContext);
     }
 
     @Test
     void testClearContext() {
-        OmniContext<OmniProcessId> mockOmniContext = mock(OmniContext.class);
+        OmniContext mockOmniContext = mock(OmniContext.class);
         OmniContextHolder.setContext(mockOmniContext);
         OmniContextHolder.clearContext();
-        OmniContext<OmniProcessId> retrievedContext = OmniContextHolder.getContext();
+        OmniContext retrievedContext = OmniContextHolder.getContext();
         assertNull(retrievedContext);
     }
 }

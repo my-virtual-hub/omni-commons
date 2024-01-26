@@ -19,20 +19,18 @@ package br.com.myvirtualhub.omni.commons.context;
 import br.com.myvirtualhub.omni.commons.core.OmniProcessId;
 
 /**
- * OmniContext class represents a context for an Omni process, which is identified by an OmniProcessId.
- * It provides methods to get and set the OmniProcessId associated with the context.
- *
- * @param <T> the type of OmniProcessId associated with the context
+ * The OmniContext class represents a context object that holds an OmniProcessId.
+ * It provides methods to retrieve and set the OmniProcessId associated with the context.
  */
-public class OmniContext<T extends OmniProcessId> {
-    private T omniProcessId;
+public class OmniContext {
+    private OmniProcessId omniProcessId;
 
     /**
      * Retrieves the OmniProcessId associated with the context.
      *
      * @return the OmniProcessId associated with the context
      */
-    public T getOmniProcessId() {
+    public OmniProcessId getOmniProcessId() {
         return omniProcessId;
     }
 
@@ -47,7 +45,7 @@ public class OmniContext<T extends OmniProcessId> {
      * @see OmniProcessId#getChannelType()
      * @see OmniProcessId#getOmniProcessUUID()
      */
-    public void setOmniProcessId(T omniProcessId) {
+    public void setOmniProcessId(OmniProcessId omniProcessId) {
         this.omniProcessId = omniProcessId;
     }
 }
