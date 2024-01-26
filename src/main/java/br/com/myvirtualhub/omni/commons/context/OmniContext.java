@@ -24,6 +24,7 @@ import br.com.myvirtualhub.omni.commons.core.OmniProcessId;
  */
 public class OmniContext {
     private OmniProcessId omniProcessId;
+    private String clientMessageId;
 
     /**
      * Retrieves the OmniProcessId associated with the context.
@@ -47,5 +48,24 @@ public class OmniContext {
      */
     public void setOmniProcessId(OmniProcessId omniProcessId) {
         this.omniProcessId = omniProcessId;
+    }
+
+    /**
+     * Retrieves the client message ID associated with the context.
+     *
+     * @return the client message ID associated with the context
+     */
+    public String getClientMessageId() {
+        return clientMessageId;
+    }
+
+    /**
+     * Sets the client message ID associated with the context. The client message ID represents
+     * a unique identifier for a message.
+     *
+     * @param clientMessageId the client message ID to be set
+     */
+    public void setClientMessageId(String clientMessageId) {
+        this.clientMessageId = clientMessageId;
     }
 }
