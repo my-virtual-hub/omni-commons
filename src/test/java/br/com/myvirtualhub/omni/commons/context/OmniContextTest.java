@@ -39,4 +39,12 @@ class OmniContextTest {
         OmniProcessId retrievedOmniProcessId = omniContext.getOmniProcessId();
         assertEquals(mockOmniProcessId, retrievedOmniProcessId);
     }
+
+    @Test
+    void testSetAndGetclientMessageId() {
+        OmniProcessId mockOmniProcessId = mock(OmniProcessId.class);
+        omniContext.setOmniProcessId(mockOmniProcessId);
+        omniContext.setClientMessageId("clientMessageId");
+        assertEquals("clientMessageId",omniContext.getClientMessageId());
+    }
 }
