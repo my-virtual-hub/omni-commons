@@ -25,11 +25,11 @@ import org.junit.jupiter.api.Test;
 
 class OmniContextTest {
 
-    private OmniContext<OmniProcessId> omniContext;
+    private OmniContext omniContext;
 
     @BeforeEach
     void setUp() {
-        omniContext = new OmniContext<>();
+        omniContext = new OmniContext();
     }
 
     @Test

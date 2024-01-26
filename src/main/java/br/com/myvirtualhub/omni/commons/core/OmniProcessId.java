@@ -17,7 +17,6 @@
 package br.com.myvirtualhub.omni.commons.core;
 
 import br.com.myvirtualhub.omni.commons.enums.ChannelType;
-import br.com.myvirtualhub.omni.commons.interfaces.Copyable;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -32,7 +31,7 @@ import java.util.UUID;
  *  @version 1.0
  *  @since   2024-01-09
  */
-public abstract class OmniProcessId implements Serializable, Copyable<OmniProcessId> {
+public abstract class OmniProcessId implements Serializable {
 
     /**
      * Represents the prefix associated with an OmniProcessId.
@@ -65,10 +64,7 @@ public abstract class OmniProcessId implements Serializable, Copyable<OmniProces
      * @throws NullPointerException if the channelType is null
      */
     protected OmniProcessId(ChannelType channelType) {
-        Objects.requireNonNull(channelType, "OmniProcessId channelType cannot be null");
-        this.prefix = "omni";
-        this.channelType = channelType;
-        this.omniProcessUUID = UUID.randomUUID();
+        this("omni", channelType, UUID.randomUUID());
     }
 
     /**
@@ -78,7 +74,7 @@ public abstract class OmniProcessId implements Serializable, Copyable<OmniProces
      * @param channelType The channel type associated with the OmniProcessId.
      * @param omniProcessUUID The universally unique identifier (UUID) associated with the OmniProcessId.
      */
-    protected OmniProcessId(String prefix, ChannelType channelType, UUID omniProcessUUID) {
+    private OmniProcessId(String prefix, ChannelType channelType, UUID omniProcessUUID) {
         Objects.requireNonNull(channelType, "OmniProcessId channelType cannot be null");
         this.prefix = prefix;
         this.channelType = channelType;

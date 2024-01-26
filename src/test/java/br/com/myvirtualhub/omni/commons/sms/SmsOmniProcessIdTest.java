@@ -20,6 +20,8 @@ import br.com.myvirtualhub.omni.commons.enums.ChannelType;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
 
 class SmsOmniProcessIdTest {
 
@@ -34,9 +36,10 @@ class SmsOmniProcessIdTest {
     @Test
     void testEqualsAndHashCode() {
         SmsOmniProcessId smsOmniProcessId1 = new SmsOmniProcessId();
-        SmsOmniProcessId smsOmniProcessId2 = (SmsOmniProcessId)smsOmniProcessId1.copy();
+        SmsOmniProcessId smsOmniProcessId2 = new SmsOmniProcessId();
 
-        assertEquals(smsOmniProcessId1, smsOmniProcessId2);
-        assertEquals(smsOmniProcessId1.hashCode(), smsOmniProcessId2.hashCode());
+        assertNotSame(smsOmniProcessId1, smsOmniProcessId2);
+        assertNotEquals(smsOmniProcessId1, smsOmniProcessId2);
+        assertNotEquals(smsOmniProcessId1.hashCode(), smsOmniProcessId2.hashCode());
     }
 }
