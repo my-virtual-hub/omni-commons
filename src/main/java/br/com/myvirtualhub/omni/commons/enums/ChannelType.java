@@ -31,5 +31,11 @@ public enum ChannelType {
      * The SMSMessage channel type. It represents communication channels that use
      * the Short Message Service (SMSMessage) for transferring information.
      */
-    SMS
+    SMS,
+
+    /**
+     * Represents a generic object or variable of unknown type.
+     * This variable can be used as a placeholder when the specific type is not yet known or does not matter.
+     */
+    GENERIC
 }
